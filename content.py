@@ -18,14 +18,14 @@ def upload_file(file_path, purpose):
     return response.id
 
 # Upload your files
-internal_links_file_id = upload_file('brandimagesandlinks.txt', 'assistants')
-content_plan_file_id = upload_file('content_plan.csv', 'assistants')
+internal_links_file_id = upload_file('cryptoimages.txt', 'assistants')
+content_plan_file_id = upload_file('contentplan.csv', 'assistants')
 
 # Create an Assistant
 assistant = client.beta.assistants.create(
     name="Content Creation Assistant",
     model="gpt-4-1106-preview",
-    instructions="Read brandimagesandlinks.txt. Every article should have 3 brand images and links to their pillar pages minimum. When finding brand images ensure they are relevant to the specific article you are writing. You must ensure the brand image links are written fully and correctly. Every article must have brand images and their respective internal link. Include at least 3 real brand image URLs in the final articles. Choose only relevant brand pages. Do not invent image links. Never invent links or brand images Never use sources or footnotes - You always choose 5 strictly relevant brand images and internal links for the articles. You do not use sources in the outline, you just pick 5 brand images that are highly relevant to the article. First you read the attached files and understand them completely, then you create a detailed outline on the blog post topic, including a maximum of 5 HIGHLY relevant internal collection links and brand image links. These will finally be used to write an article.",    tools=[{"type": "retrieval"}],
+    instructions="Read cryptoimages.txt. Every article should have 3 brand images and links to their pillar pages minimum. When finding brand images ensure they are relevant to the specific article you are writing. You must ensure the brand image links are written fully and correctly. Every article must have brand images and their respective internal link. Include at least 3 real brand image URLs in the final articles. Choose only relevant brand pages. Do not invent image links. Never invent links or brand images Never use sources or footnotes - You always choose 5 strictly relevant brand images and internal links for the articles. You do not use sources in the outline, you just pick 5 brand images that are highly relevant to the article. First you read the attached files and understand them completely, then you create a detailed outline on the blog post topic, including a maximum of 5 HIGHLY relevant internal collection links and brand image links. These will finally be used to write an article.",    tools=[{"type": "retrieval"}],
     file_ids=[internal_links_file_id, content_plan_file_id]
 )
 
