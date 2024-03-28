@@ -39,7 +39,7 @@ def wait_for_run_completion(thread_id, run_id, timeout=300):
     raise TimeoutError("Run did not complete within the specified timeout.")
 
 def get_internal_links(thread_id, blog_post_idea):
-    get_request = f"Read brandimagesandlinks.txt, Choose 5 relevant pages, their links and their respective images, that are relevant to {blog_post_idea}.."
+    get_request = f"Lees internallinks.txt, kies 5 relevante pagina's, hun links en respectieve afbeeldingen, die relevant zijn voor {blog_post_idea}.."
     client.beta.threads.messages.create(thread_id=thread_id, role="user", content=get_request)
     get_request_run = client.beta.threads.runs.create(thread_id=thread_id, assistant_id=assistant.id)
     wait_for_run_completion(thread_id, get_request_run.id)
