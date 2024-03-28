@@ -49,7 +49,7 @@ def get_internal_links(thread_id, blog_post_idea):
 print (get_internal_links)
 
 def process_blog_post(thread_id, blog_post_idea):
-    outline_request = f"Do not invent image links. use the brand images and internal links from {get_internal_links} and use them to create an outline for an article about {blog_post_idea}' In the outline do not use sources or footnotes, but just add a relevant brand images in a relevant section, and a relevant internal link in a relevant section. There is no need for a lot of sources, each article needs a minimum of 5 brand images and internal links."
+    outline_request = f"Verzin geen internal links. Gebruik de brand images en internal links uit {get_internal_links} en gebruik ze om een outline te maken voor een artikel over {blog_post_idea} Gebruik in de outline geen bronnen of voetnoten, maar voeg alleen relevante brand images toe in een relevante sectie, en een relevante internal link in een relevante sectie. Het is niet nodig om veel bronnen te gebruiken, elke artikel moet minimaal 5 brand images en internal links hebben."
     client.beta.threads.messages.create(thread_id=thread_id, role="user", content=outline_request)
     outline_run = client.beta.threads.runs.create(thread_id=thread_id, assistant_id=assistant.id)
     wait_for_run_completion(thread_id, outline_run.id)
